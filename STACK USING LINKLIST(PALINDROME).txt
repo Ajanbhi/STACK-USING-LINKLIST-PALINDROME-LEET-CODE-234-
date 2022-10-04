@@ -1,0 +1,25 @@
+STACK IMPLEMENTATION BY LINKLIST
+
+
+
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        stack<int>st;    // here stack is defined
+        struct ListNode *temp=head;  // definning the link list
+        while(temp!=NULL){
+            st.push(temp->val);    //now traversing the linklist and putting its value into a stack
+            temp=temp->next;
+        }
+        temp=head;
+        while(temp!=NULL  && !st.empty()){   //now taking back with value from stack to link list
+            if(temp->val!=st.top()){
+                return false;
+            }
+            temp=temp->next;
+            st.pop();
+            
+        }
+        return true;
+    }
+};
